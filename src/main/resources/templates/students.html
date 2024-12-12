@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Öğrenci Listesi</title>
+  <style>
+    /* Önceki stili koruduk */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+    a {
+      text-decoration: none;
+      color: #007bff;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<h1>Öğrenciler</h1>
+<div>
+  <a href="/">Ana Sayfaya Dön</a>
+</div>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>İsim</th>
+    <th>Soyisim</th>
+    <th>Email</th>
+    <th>Doğum Tarihi</th>
+    <th>İşlemler</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="ogrenci : ${ogrenciler}">
+    <td th:text="${ogrenci.id}"></td>
+    <td th:text="${ogrenci.isim}"></td>
+    <td th:text="${ogrenci.soyisim}"></td>
+    <td th:text="${ogrenci.email}"></td>
+    <td th:text="${ogrenci.dogumTarihi}"></td>
+    <td>
+      <a th:href="@{/students/{id}/edit(id=${ogrenci.id})}">Düzenle</a> |
+      <a th:href="@{/students/{id}/delete(id=${ogrenci.id})}">Sil</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
